@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="F5">
+
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.001"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+
+
+
+  <link
+    name="rocket_body">
+    <inertial>
+      <origin
+        xyz="-0.0093973 -0.41825 -6.5285E-18"
+        rpy="0 0 0" />
+      <mass
+        value="45916" />
+      <inertia
+        ixx="129980"
+        ixy="9.0137E-14"
+        ixz="5.3634E-14"
+        iyy="21586"
+        iyz="3.9957E-12"
+        izz="129980" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="rocket_body.STL" scale="0.1 0.1 0.1"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="rocket_body.STL" scale="0.1 0.1 0.1" />
+      </geometry>
+    </collision>
+  </link>
+
+
+<joint name="floating_joint" type="floating">
+  <parent link="base_link"/>
+  <child link="rocket_body"/>
+  <origin xyz="0 0 0" rpy="0 0 0"/>
+</joint>
+
+</robot>

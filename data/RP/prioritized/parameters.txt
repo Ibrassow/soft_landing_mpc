@@ -1,0 +1,47 @@
+# Timestep
+dt = 1
+m0 = 2000
+mf = 300
+
+sl = SoftLander()
+sl.set_thrust_limits(0, 24000)
+sl.set_masses(m0, mf)
+sl.set_glideslope(70)
+sl.set_thrust_pointing(50)
+sl.set_vmax(90)
+Ad, Bd, Dd = sl.set_dynamics(dt)
+
+
+# Landing target on the y-z surface
+landing_target = np.array([0,0,0]) 
+#X0 = np.array([2400, 450,-330,-10,-40,10, np.log(m0)])
+X0 = np.array([1840,1020,-650,-48,-11,7, np.log(m0)])
+
+
+## Number of knot points
+N = 48
+
+
+
+
+def add_control_disturbances():
+    w = np.zeros(4)
+    # Thursters
+    w[:3] = np.random.normal(0, 0.5, 3)
+    return w
+
+solve='ECOS'
+
+
+
+    if N > 8:
+        wu = add_control_disturbances()
+        #w = add_state_disturbances()
+    else:
+        wu = np.zeros(4)
+        #w = np.zeros(7)
+
+
+More robust to uncertainties but still not sufficient when nearing the target 
+
+
